@@ -10,4 +10,8 @@
 
 @implementation WZZTextCheckConfig
 
++ (instancetype)config {
+    return [[WZZTextCheckConfig alloc] init];
+}
+
 @end

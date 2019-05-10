@@ -67,5 +67,12 @@
  */
 @property (strong, nonatomic) NSString * checkUseRegular;
 
+/**
+ 生成配置
+
+ @return 实例
+ */
++ (instancetype)config;
+
 @end
 

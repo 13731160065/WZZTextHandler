@@ -30,10 +30,10 @@
     if (config.checkNoLength0 && !string.length) {
         return NO;
     }
-    if (config.checkOnlyLetter && [self __matchRegular:@"[^a-zA-z]{1,}" str:string]) {
+    if (config.checkOnlyLetter && [self __matchRegular:@"[^a-zA-z]" str:string]) {
         return NO;
     }
-    if (config.checkOnlyNumber && [self __matchRegular:@"[^0-9]{1,}" str:string]) {
+    if (config.checkOnlyNumber && [self __matchRegular:@"[^0-9]" str:string]) {
         return NO;
     }
     if (config.checkEqualLength && string.length != config.checkEqualLength.integerValue) {
@@ -80,6 +80,9 @@
                  str:(NSString *)str {
     NSRegularExpression * regHandler = [NSRegularExpression regularExpressionWithPattern:reg options:NSRegularExpressionCaseInsensitive error:nil];
     NSTextCheckingResult * result = [regHandler firstMatchInString:str options:NSMatchingReportProgress range:NSMakeRange(0, str.length)];
+    if (!result) {
+        return NO;
+    }
     NSRange range = result.range;
     return (range.location != NSNotFound);
 }
